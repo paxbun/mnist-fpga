@@ -1,8 +1,8 @@
 # Running inference model for MNIST using FPGAs
 
-# How to build and launch
+## How to build and launch
 
-* Install C++17 feature-complete compiler.
+### Install C++17 feature-complete compiler.
 
 Ubuntu 18.04 is shipped with GCC 7, which does not contain some of the standard headers of the C++17 standard. `mnist-fpga` is written in C++17. To properly build the project, please install GCC 8 or higher (or Clang 11 or higher).
 For example, you can install GCC 9 by the following commands:
@@ -12,7 +12,7 @@ sudo apt update
 sudo apt install gcc-9
 ```
 
-* Configure CMake with `VITIS_ROOT`
+### Configure CMake with `VITIS_ROOT`
 
 Use `-D` flag to set `VITIS_ROOT` to the root directory of Vitis. If directories containing `v++` is already in `PATH`, you may skip this.
 ```
@@ -21,18 +21,26 @@ cd build
 cmake -DVITIS_ROOT=/opt/Xilinx/Vitis/2020.1 -G "<generator name here>" ..
 ```
 
-* Build
+### Build
 
 Build the project with `cmake --build`.
 ```
 cmake --build .
 ```
 
-* Launch
+### Set required environmental variables and Launch
 
-Set `XILINX_XRT` (environmental variable) to the root directory of Xilinx Runtime. If `XILINX_XRT` is not properly set, the executable will fail to find the FPGA to use.
+Set the following environemntal variables to proper values:
+
+* `XILINX_XRT`: the root directory of Xilinx Runtime
+* `VENDOR_NAME`: `Xilinx`
+* `DEVICE_NAME`: the name of the device (e.g. `xilinx_u250_xdma_201830_2`)
+
+If any of the variable is not properly set, the executable will fail to execute the kernel.
 ```
 export XILINX_XRT=/opt/Xilinx/xrt
+export VENDOR_NAME=Xilinx
+...
 ./mnist-fpga
 ```
 
@@ -51,6 +59,10 @@ If you are using Visual Studio Code, you can do the same by adding configuration
         {
           "name": "XILINX_XRT",
           "value": "opt/Xilinx/xrt"
+        },
+        {
+          "name": "VENDOR_NAME",
+          "value": "Xilinx"
         }
       ]
       // more options here
