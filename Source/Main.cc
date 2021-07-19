@@ -63,13 +63,13 @@ try
 
     return 0;
 }
-catch (mf::ConfigNotFoundException const& ex)
-{
-    std::cout << "Failed to load the configuration: " << ex.what() << std::endl;
-    return EXIT_FAILURE;
-}
 catch (mf::ClException const& ex)
 {
-    std::cout << ex.what() << std::endl;
+    std::cout << ex.GetGenericInfo() << ": " << ex.GetMessage() << std::endl;
     return ex.errorCode;
+}
+catch (mf::Exception const& ex)
+{
+    std::cout << ex.GetGenericInfo() << ": " << ex.GetMessage() << std::endl;
+    return EXIT_FAILURE;
 }

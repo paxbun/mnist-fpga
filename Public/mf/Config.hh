@@ -4,6 +4,8 @@
 #ifndef MNIST_FPGA_CONFIG_HH
 #define MNIST_FPGA_CONFIG_HH
 
+#include <mf/Exception.hh>
+
 #include <cstdlib>
 #include <string>
 
@@ -13,20 +15,7 @@ namespace mf
 /**
  * `ConfigNotFoundException` is thrown when any error occurred during retrieving the configuration.
  */
-struct ConfigNotFoundException : public std::exception
-{
-    char const* message;
-
-    /**
-     * @param message the message to display.
-     */
-    ConfigNotFoundException(char const* message) : message { message ? message : "" } {}
-
-    virtual char const* what() const noexcept override
-    {
-        return message;
-    }
-};
+MF_MAKE_NEW_EXCEPTION(ConfigNotFoundException, "Failed to load the configuration");
 
 /**
  * `Config` contains options required during the execution of the program.
