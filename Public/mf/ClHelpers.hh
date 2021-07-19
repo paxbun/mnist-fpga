@@ -45,7 +45,7 @@ struct ClException : public std::exception
     ClException(cl_int errorCode, char const* expression = nullptr) :
         expression { expression },
         errorCode { errorCode },
-        description { expression == nullptr ? "Some expression" : expression }
+        description { expression ? expression : "Some expression" }
     {
         description += " failed with error code (";
         description += std::to_string(errorCode);
