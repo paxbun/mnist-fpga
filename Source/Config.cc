@@ -18,4 +18,5 @@ Config Config::MakeFromEnvironment()
 
     return Config { vendorName, deviceName };
 }
+
 }
