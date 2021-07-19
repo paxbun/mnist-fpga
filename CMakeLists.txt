@@ -12,6 +12,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(Vitis REQUIRED)
 
 add_executable(mnist-fpga
+    ${PROJECT_SOURCE_DIR}/Source/ClFactory.cc
     ${PROJECT_SOURCE_DIR}/Source/Config.cc
     ${PROJECT_SOURCE_DIR}/Source/Main.cc
 )
