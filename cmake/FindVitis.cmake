@@ -275,4 +275,3 @@ include(FindPackageHandleStandardArgs)
 # Handle the QUIETLY and REQUIRED arguments and set Vitis_FOUND to TRUE if all
 # listed variables were found.
 find_package_handle_standard_args(Vitis DEFAULT_MSG ${Vitis_EXPORTS})
-{"mode":"full","isActive":false}
