@@ -24,7 +24,7 @@ struct Exception
     /**
      * @param message the message to display.
      */
-    Exception(char const* message = nullptr) : message { message ? message : "" } {}
+    Exception(char const* message = nullptr) : message { message } {}
 
     /**
      * Returns human-readable, common information that describes the error that exceptions of this

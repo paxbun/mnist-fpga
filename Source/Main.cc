@@ -65,11 +65,17 @@ try
 }
 catch (mf::ClException const& ex)
 {
-    std::cout << ex.GetGenericInfo() << ": " << ex.GetMessage() << std::endl;
+    std::cout << ex.GetGenericInfo();
+    if (auto message = ex.GetMessage(); message != nullptr)
+        std::cout << ": " << ex.GetMessage();
+    std::cout << std::endl;
     return ex.errorCode;
 }
 catch (mf::Exception const& ex)
 {
-    std::cout << ex.GetGenericInfo() << ": " << ex.GetMessage() << std::endl;
+    std::cout << ex.GetGenericInfo();
+    if (auto message = ex.GetMessage(); message != nullptr)
+        std::cout << ": " << ex.GetMessage();
+    std::cout << std::endl;
     return EXIT_FAILURE;
 }
