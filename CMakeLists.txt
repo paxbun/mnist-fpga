@@ -14,3 +14,10 @@ find_package(Vitis REQUIRED)
 add_executable(mnist-fpga
     ${PROJECT_SOURCE_DIR}/Source/Main.cc
 )
+target_include_directories(mnist-fpga
+    PUBLIC ${PROJECT_SOURCE_DIR}/Public
+    PRIVATE ${Vitis_INCLUDE_DIRS}
+)
+target_link_libraries(mnist-fpga
+    ${Vitis_LIBRARIES}
+)
