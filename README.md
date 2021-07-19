@@ -2,6 +2,13 @@
 
 ## How to build and launch
 
+### Clone including all submodules
+
+This repo has dependencies on other repos. To clone this repo including all submodules, Type the following command:
+```
+git clone --recurse-submodules https://github.com/paxbun/mnist-fpga
+```
+
 ### Install C++17 feature-complete compiler
 
 Ubuntu 18.04 is shipped with GCC 7, which does not contain some of the standard headers of the C++17 standard. `mnist-fpga` is written in C++17. To properly build the project, please install GCC 9 or higher. You can install GCC 9 by the following commands:

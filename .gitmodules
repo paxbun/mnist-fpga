@@ -1,0 +1,3 @@
+[submodule "Dependencies/float-matmul"]
+	path = Dependencies/float-matmul
+	url = https://github.com/paxbun/float-matmul
