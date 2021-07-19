@@ -16,8 +16,14 @@ Config Config::MakeFromEnvironment()
     GETENV(vendorName, VENDOR_NAME);
     GETENV(deviceName, DEVICE_NAME);
     GETENV(xclbinPath, XCLBIN_PATH);
+    GETENV(weightFilePath, WEIGHT_PATH)
 
-    return Config { vendorName, deviceName };
+    return Config {
+        vendorName,
+        deviceName,
+        xclbinPath,
+        weightFilePath,
+    };
 }
 
 }
