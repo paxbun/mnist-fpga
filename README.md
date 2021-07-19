@@ -2,6 +2,10 @@
 
 ## How to build and launch
 
+### Install vcpkg
+
+`mnist-fpga` has a dependency on [HDF5](https://www.hdfgroup.org/), which is configured with [Vcpkg](https://github.com/microsoft/vcpkg). Please follow the Vcpkg installation guide and install HDF5 using Vcpkg.
+
 ### Clone including all submodules
 
 This repo has dependencies on other repos. To clone this repo including all submodules, Type the following command:
@@ -18,13 +22,26 @@ sudo apt update
 sudo apt-get install gcc-9 g++-9
 ```
 
-### Configure CMake with `VITIS_ROOT`
+### Configure CMake
 
-Use `-D` flag to set `VITIS_ROOT` to the root directory of Vitis. If directories containing `v++` is already in `PATH`, you may skip this.
+Configure the project with `cmake <project directory>`. Use `-D` flag to configure Vitis and Vcpkg. If directories containing `v++` is already in `PATH`, you may not have to set `VITIS_ROOT`.
 ```
 mkdir build
 cd build
-cmake -DVITIS_ROOT=/opt/Xilinx/Vitis/2020.1 -G "<generator name here>" ..
+cmake -DCMAKE_TOOLCHAIN_FILE=<path to Vcpkg>/scripts/buildsystems/vcpkg.cmake \
+      -DVITIS_ROOT=/opt/Xilinx/Vitis/2020.1                                   \
+      -G "<generator name here>"                                              \
+      ..
+```
+
+If you are using Visual Studio Code, you can do the same thing in `settings.json`.
+```json
+{
+  "cmake.configureArgs": [
+    "-DVITIS_ROOT=/opt/Xilinx/Vitis/2020.1",
+    "-DCMAKE_TOOLCHAIN_FILE=<path to Vcpkg>/scripts/buildsystems/vcpkg.cmake"
+  ]
+}
 ```
 
 ### Build

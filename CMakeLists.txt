@@ -10,10 +10,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(Vitis REQUIRED)
+find_package(hdf5 CONFIG REQUIRED)
 
 add_executable(mnist-fpga
     ${PROJECT_SOURCE_DIR}/Source/ClFactory.cc
     ${PROJECT_SOURCE_DIR}/Source/Config.cc
+    ${PROJECT_SOURCE_DIR}/Source/File.cc
     ${PROJECT_SOURCE_DIR}/Source/Main.cc
 )
 target_include_directories(mnist-fpga
@@ -21,5 +23,6 @@ target_include_directories(mnist-fpga
     PRIVATE ${Vitis_INCLUDE_DIRS}
 )
 target_link_libraries(mnist-fpga
-    ${Vitis_LIBRARIES}
+    PRIVATE ${Vitis_LIBRARIES}
+    PRIVATE hdf5::hdf5-static hdf5::hdf5_hl-static
 )
