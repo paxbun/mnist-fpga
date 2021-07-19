@@ -34,6 +34,7 @@ Set the following environemntal variables to proper values:
 * `XILINX_XRT`: the root directory of Xilinx Runtime
 * `VENDOR_NAME`: `Xilinx`
 * `DEVICE_NAME`: the name of the device (e.g. `xilinx_u250_xdma_201830_2`)
+* `XCLBIN_PATH`: the path of the device binary file. (e.g. `./kernels.xclbin`)
 
 If any of the variable is not properly set, the executable will fail to execute the kernel.
 ```

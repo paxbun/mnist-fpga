@@ -3,18 +3,19 @@
 
 #include <mf/Config.hh>
 
+#define GETENV(VarName, EnvVarName)                                                                \
+    char const* VarName { std::getenv(#EnvVarName) };                                              \
+    if (VarName == nullptr)                                                                        \
+        throw ConfigNotFoundException { #EnvVarName " is missing" };
+
 namespace mf
 {
 
 Config Config::MakeFromEnvironment()
 {
-    char const* vendorName { std::getenv("VENDOR_NAME") };
-    if (vendorName == nullptr)
-        throw ConfigNotFoundException { "VENDOR_NAME is missing" };
-
-    char const* deviceName { std::getenv("DEVICE_NAME") };
-    if (deviceName == nullptr)
-        throw ConfigNotFoundException { "DEVICE_NAME is missing" };
+    GETENV(vendorName, VENDOR_NAME);
+    GETENV(deviceName, DEVICE_NAME);
+    GETENV(xclbinPath, XCLBIN_PATH);
 
     return Config { vendorName, deviceName };
 }

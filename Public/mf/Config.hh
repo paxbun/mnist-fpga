@@ -33,6 +33,11 @@ struct Config
     std::string deviceName;
 
     /**
+     * the path of the device binary file. Corresponds to the `XCLBIN_PATH` environmental variable.
+     */
+    std::string xclbinPath; // TODO: change the type to std::filesystem::path
+
+    /**
      * Creates a `Config` instance from environmental variables.
      *
      * @throws ConfigNotFoundException If any required environmental variable is not set.
