@@ -45,7 +45,7 @@ class ClFactory
      * created.
      * @throws ClException
      */
-    // static std::pair<cl::Context, cl::Queue> MakeContextAndQueue(cl::Device device);
+    static std::pair<cl::Context, cl::CommandQueue> MakeContextAndQueue(cl::Device device);
 };
 
 }

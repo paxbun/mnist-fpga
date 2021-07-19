@@ -14,6 +14,14 @@
     if (auto errorCode = (expr); errorCode != CL_SUCCESS)                                          \
         throw ::mf::ClException { errorCode, #expr };
 
+#define CL_CHECK_EC(expr)                                                                          \
+    {                                                                                              \
+        cl_int errorCode = CL_SUCCESS;                                                             \
+        (expr);                                                                                    \
+        if (errorCode != CL_SUCCESS)                                                               \
+            throw ::mf::ClException { errorCode, #expr };                                          \
+    }
+
 namespace mf
 {
 

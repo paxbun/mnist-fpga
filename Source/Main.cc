@@ -12,6 +12,7 @@ try
 {
     auto config { mf::Config::MakeFromEnvironment() };
     auto [platform, device] { mf::ClFactory::MakePlatformAndDevice(config) };
+    auto [context, queue] { mf::ClFactory::MakeContextAndQueue(device) };
 
     return 0;
 }

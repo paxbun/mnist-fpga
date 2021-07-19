@@ -53,4 +53,22 @@ std::pair<cl::Platform, cl::Device> ClFactory::MakePlatformAndDevice(Config cons
     return std::make_pair(platform, device);
 }
 
+std::pair<cl::Context, cl::CommandQueue> ClFactory::MakeContextAndQueue(cl::Device device)
+{
+    cl_device_id deviceId = device();
+    cl_context   context  = nullptr;
+    CL_CHECK_EC(context = clCreateContext(nullptr, 1, &deviceId, nullptr, nullptr, &errorCode));
+
+    cl_command_queue queue = nullptr;
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+    CL_CHECK_EC(
+        clCreateCommandQueue(context,
+                             deviceId,
+                             CL_QUEUE_PROFILING_ENABLE | CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE,
+                             &errorCode));
+#pragma GCC diagnostic warning "-Wdeprecated-declarations"
+
+    return std::make_pair(context, queue);
+}
+
 }
