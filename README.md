@@ -15,7 +15,7 @@ Ubuntu 18.04 is shipped with GCC 7, which does not contain some of the standard 
 ```
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
-sudo apt install gcc-9
+sudo apt-get install gcc-9 g++-9
 ```
 
 ### Configure CMake with `VITIS_ROOT`
