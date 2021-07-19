@@ -14,17 +14,37 @@ namespace mf
  */
 struct Exception
 {
+  public:
+    /**
+     * Returns human-readable, common information that describes the error that exceptions of this
+     * type indicates.
+     */
+    virtual char const* GetGenericInfo() const noexcept = 0;
+
+    /**
+     * Returns human-readable, more detailed information that describes the specific error that this
+     * instance indicates.
+     */
+    virtual char const* GetMessage() const noexcept = 0;
+};
+
+/**
+ * A simple `mf::Exception` implementation that only contains only one single string member
+ * variable. Intended to be the base class of all simple exception classes.
+ */
+struct SimpleException : Exception
+{
   private:
     static constexpr char const* genericInfo = "Generic exception occurred";
 
   private:
-    char const* message;
+    std::string message;
 
   public:
     /**
      * @param message the message to display.
      */
-    Exception(char const* message = nullptr) : message { message } {}
+    SimpleException(std::string const& message = "") : message { message } {}
 
     /**
      * Returns human-readable, common information that describes the error that exceptions of this
@@ -39,22 +59,22 @@ struct Exception
      * Returns human-readable, more detailed information that describes the specific error that this
      * instance indicates.
      */
-    virtual char const* GetMessage() const noexcept
+    virtual char const* GetMessage() const noexcept final
     {
-        return message;
+        return message.c_str();
     }
 };
 
 }
 
 #define MF_MAKE_NEW_EXCEPTION(ExceptionName, CommonDescription)                                    \
-    struct ExceptionName : public ::mf::Exception                                                  \
+    struct ExceptionName : public ::mf::SimpleException                                            \
     {                                                                                              \
       private:                                                                                     \
         static constexpr char const* genericInfo = (CommonDescription);                            \
                                                                                                    \
       public:                                                                                      \
-        using ::mf::Exception::Exception;                                                          \
+        using ::mf::SimpleException::SimpleException;                                              \
         virtual char const* GetGenericInfo() const noexcept override                               \
         {                                                                                          \
             return genericInfo;                                                                    \
