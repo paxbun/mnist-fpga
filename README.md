@@ -1,5 +1,10 @@
 # Running inference model for MNIST using FPGAs
 
+# Prerequisites
+
+* Set `VITIS_ROOT` environmental variable
+* Set `XILINX_XRT` environmental variable
+
 # License
 
 ## `mnist-fpga`
