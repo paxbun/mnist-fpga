@@ -1,0 +1,1 @@
+# Running inference model for MNIST using FPGAs
