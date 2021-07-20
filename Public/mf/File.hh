@@ -25,6 +25,12 @@ MF_MAKE_NEW_EXCEPTION(NoSuchFileException, "Could not open the file");
 class File
 {
   public:
+    /**
+     * Reads the whole file and save the content into a `std::vector<uint8_t>` instance.
+     * 
+     * @param path the file to read
+     * @throws NoSuchFileException
+     */
     std::vector<uint8_t> ReadFile(std::filesystem::path const& path);
 };
 

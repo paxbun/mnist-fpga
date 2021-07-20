@@ -54,6 +54,10 @@ std::vector<std::string> GetMemberNames(hid_t objectId)
     return memberNames;
 }
 
+/**
+ * Returns the identifier of the given object of the given group if it exists; returns negative
+ * value otherwise.
+ */
 hid_t GetObjectWithType(hid_t groupId, char const* name, H5O_type_t type)
 {
     if (H5Lexists(groupId, name, H5P_DEFAULT) <= 0)
