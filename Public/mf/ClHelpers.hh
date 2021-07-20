@@ -11,7 +11,7 @@
 #include <string>
 
 #define CL_CHECK(expr)                                                                             \
-    if (auto errorCode = (expr); errorCode != CL_SUCCESS)                                          \
+    if (auto errorCode { (expr) }; errorCode != CL_SUCCESS)                                        \
         throw ::mf::ClException { errorCode, #expr };
 
 #define CL_CHECK_EC(expr)                                                                          \
