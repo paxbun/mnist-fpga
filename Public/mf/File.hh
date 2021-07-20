@@ -26,7 +26,7 @@ class File
 {
   public:
     std::vector<uint8_t> ReadFile(std::filesystem::path const& path);
-}
+};
 
 }
 
