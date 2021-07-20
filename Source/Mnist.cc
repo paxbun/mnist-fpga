@@ -59,6 +59,8 @@ std::vector<float> ReadImages(std::filesystem::path const& imagePath)
     uint32_t imageHeight, imageWidth;
     READ_FROM_IFS(imageHeight);
     READ_FROM_IFS(imageWidth);
+    RevertEndian(imageHeight);
+    RevertEndian(imageWidth);
 
     if (imageHeight != MnistSample::height || imageWidth != MnistSample::width)
         throw InvalidMnistDatasetException { imagePath.string() };
@@ -115,7 +117,7 @@ Mnist Mnist::MakeFromFile(std::filesystem::path const& imagePath,
 {
     auto images { ReadImages(imagePath) };
     auto labels { ReadLabels(labelPath) };
-    if (images.size() != labels.size())
+    if (images.size() != labels.size() * MnistSample::width * MnistSample::height)
         throw MnistSampleNumberDoesNotMatchException {};
 
     return Mnist { images.size(), std::move(images), std::move(labels) };
