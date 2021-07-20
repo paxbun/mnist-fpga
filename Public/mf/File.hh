@@ -20,7 +20,7 @@ namespace mf
 MF_MAKE_NEW_EXCEPTION(NoSuchFileException, "Could not open the file");
 
 /**
- * Contains file IO helper functions. All member functions of this class is static.
+ * Contains file IO helper functions. All member functions of this class are static.
  */
 class File
 {

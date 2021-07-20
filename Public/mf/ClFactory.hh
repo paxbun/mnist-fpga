@@ -25,7 +25,7 @@ MF_MAKE_NEW_EXCEPTION(DeviceNotFoundException, "Failed to find the device");
 
 /**
  * `ClFactory` contains helper functions to create OpenCL resources. All member functions of
- * `ClFactory` is static.
+ * `ClFactory` are static.
  */
 class ClFactory
 {
