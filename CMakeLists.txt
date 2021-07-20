@@ -17,6 +17,7 @@ add_executable(mnist-fpga
     ${PROJECT_SOURCE_DIR}/Source/Config.cc
     ${PROJECT_SOURCE_DIR}/Source/File.cc
     ${PROJECT_SOURCE_DIR}/Source/Main.cc
+    ${PROJECT_SOURCE_DIR}/Source/Weights.cc
 )
 target_include_directories(mnist-fpga
     PUBLIC ${PROJECT_SOURCE_DIR}/Public
