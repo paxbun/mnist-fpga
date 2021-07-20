@@ -144,7 +144,7 @@ void IterateOverModelWeightsGroup(
 
 }
 
-WeightCollection Weights::LoadFromHdf5(std::filesystem::path const& path)
+WeightCollection Weights::MakeFromHdf5(std::filesystem::path const& path)
 {
     auto [fileId, modelWeightsGroupId] { GetFileAndModelWeightsGroup(path) };
 
