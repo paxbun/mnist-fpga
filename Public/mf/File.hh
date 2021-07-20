@@ -31,7 +31,7 @@ class File
      * @param path the file to read
      * @throws NoSuchFileException
      */
-    std::vector<uint8_t> ReadFile(std::filesystem::path const& path);
+    static std::vector<uint8_t> ReadFile(std::filesystem::path const& path);
 };
 
 }
