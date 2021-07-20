@@ -17,6 +17,8 @@ Config Config::MakeFromEnvironment()
     GETENV(deviceName, DEVICE_NAME);
     GETENV(xclbinPath, XCLBIN_PATH);
     GETENV(weightFilePath, WEIGHT_PATH)
+    GETENV(mnistImageFilePath, MNIST_IMAGE_PATH);
+    GETENV(mnisgLabelFilePath, MNIST_LABEL_PATH);
 
     return Config {
         vendorName,

@@ -60,6 +60,8 @@ Set the following environemntal variables to proper values:
 * `DEVICE_NAME`: the name of the device (e.g. `xilinx_u250_xdma_201830_2`)
 * `XCLBIN_PATH`: the path of the device binary file. (e.g. `./kernels.xclbin`)
 * `WEIGHT_PATH`: the path of the weight file. (e.g. `./mnist.h5`)
+* `MNIST_IMAGE_PATH`: the path of the MNIST image file. (e.g. `train-images.idx3-ubyte`)
+* `MNIST_LABEL_PATH`: the path of the MNIST label file. (e.g. `train-labels.idx3-ubyte`)
 
 If any of the variable is not properly set, the executable will fail to execute the kernel.
 ```

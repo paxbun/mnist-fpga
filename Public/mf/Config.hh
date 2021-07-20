@@ -45,6 +45,18 @@ struct Config
     std::filesystem::path weightFilePath;
 
     /**
+     * the path of the file containing MNIST images. Corresponds to the `MNIST_IMAGE_PATH`
+     * environmental variable.
+     */
+    std::filesystem::path mnistImageFilePath;
+
+    /**
+     * the path of the file containing MNIST labels. Corresponds to the `MNIST_LABEL_PATH`
+     * environmental variable.
+     */
+    std::filesystem::path mnistLabelFilePath;
+
+    /**
      * Creates a `Config` instance from environmental variables.
      *
      * @throws ConfigNotFoundException If any required environmental variable is not set.
