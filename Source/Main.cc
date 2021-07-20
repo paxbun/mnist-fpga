@@ -3,6 +3,7 @@
 
 #include <mf/ClFactory.hh>
 #include <mf/Config.hh>
+#include <mf/Mnist.hh>
 #include <mf/Weights.hh>
 
 #include <iostream>
@@ -15,6 +16,7 @@ try
     auto [platform, device] { mf::ClFactory::MakePlatformAndDevice(config) };
     auto [context, queue] { mf::ClFactory::MakeContextAndQueue(device) };
     auto weights { mf::Weights::MakeFromHdf5(config) };
+    auto mnist { mf::Mnist::MakeFromFile(config) };
 
     for (auto& [name, weight] : weights)
     {
