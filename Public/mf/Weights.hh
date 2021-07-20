@@ -100,7 +100,7 @@ class Weights
      * @param path the path of the HDF5 file to read.
      * @throws NoSuchFileException
      */
-    static WeightCollection LoadFromHdf5(std::filesystem::path const& path);
+    static WeightCollection MakeFromHdf5(std::filesystem::path const& path);
 
     /**
      * Reads layer weights from the file specified in the configuration.
@@ -108,9 +108,9 @@ class Weights
      * @param config the configuration
      * @throws NoSuchFileException
      */
-    inline static WeightCollection LoadFromHdf5(Config const& config)
+    inline static WeightCollection MakeFromHdf5(Config const& config)
     {
-        return LoadFromHdf5(config.weightFilePath);
+        return MakeFromHdf5(config.weightFilePath);
     }
 };
 

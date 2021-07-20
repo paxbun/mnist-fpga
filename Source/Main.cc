@@ -14,7 +14,7 @@ try
     auto config { mf::Config::MakeFromEnvironment() };
     auto [platform, device] { mf::ClFactory::MakePlatformAndDevice(config) };
     auto [context, queue] { mf::ClFactory::MakeContextAndQueue(device) };
-    auto weights { mf::Weights::LoadFromHdf5(config) };
+    auto weights { mf::Weights::MakeFromHdf5(config) };
 
     for (auto& [name, weight] : weights)
     {
