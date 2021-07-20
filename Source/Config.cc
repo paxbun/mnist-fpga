@@ -21,10 +21,7 @@ Config Config::MakeFromEnvironment()
     GETENV(mnisgLabelFilePath, MNIST_LABEL_PATH);
 
     return Config {
-        vendorName,
-        deviceName,
-        xclbinPath,
-        weightFilePath,
+        vendorName, deviceName, xclbinPath, weightFilePath, mnistImageFilePath, mnisgLabelFilePath,
     };
 }
 
