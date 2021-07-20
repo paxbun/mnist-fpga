@@ -15,6 +15,7 @@ try
     auto config { mf::Config::MakeFromEnvironment() };
     auto [platform, device] { mf::ClFactory::MakePlatformAndDevice(config) };
     auto [context, queue] { mf::ClFactory::MakeContextAndQueue(device) };
+    auto program { mf::ClFactory::MakeProgram(config, context, device) };
     auto weights { mf::Weights::MakeFromHdf5(config) };
     auto mnist { mf::Mnist::MakeFromFile(config) };
 

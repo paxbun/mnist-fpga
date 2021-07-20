@@ -46,6 +46,14 @@ class ClFactory
      * @throws ClException
      */
     static std::pair<cl::Context, cl::CommandQueue> MakeContextAndQueue(cl::Device device);
+
+    /**
+     * Creates a `cl::Program` instance from the xclbin file specified in the configuration.
+     * @param config the configuration
+     * @throws ClException
+     * @throws NoSuchFileException
+     */
+    static cl::Program MakeProgram(Config const& config, cl::Context context, cl::Device device);
 };
 
 }

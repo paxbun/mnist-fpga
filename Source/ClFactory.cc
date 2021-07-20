@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 #include <mf/ClFactory.hh>
+#include <mf/File.hh>
 
 namespace mf
 {
@@ -69,6 +70,21 @@ std::pair<cl::Context, cl::CommandQueue> ClFactory::MakeContextAndQueue(cl::Devi
 #pragma GCC diagnostic warning "-Wdeprecated-declarations"
 
     return std::make_pair(context, queue);
+}
+
+cl::Program ClFactory::MakeProgram(Config const& config, cl::Context context, cl::Device device)
+{
+    auto file { File::ReadFile(config.xclbinPath) };
+
+    size_t         numBytesProgram = file.size();
+    uint8_t const* data            = file.data();
+    cl_int         binaryStatus    = CL_SUCCESS;
+    cl_program     program         = nullptr;
+    CL_CHECK_EC(program = clCreateProgramWithBinary(
+                    context(), 1, &device(), &numBytesProgram, &data, &binaryStatus, &errorCode));
+    CL_CHECK(clBuildProgram(program, 1, &device(), nullptr, nullptr, nullptr));
+
+    return program;
 }
 
 }
