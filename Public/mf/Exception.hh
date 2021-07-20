@@ -61,6 +61,8 @@ struct SimpleException : Exception
      */
     virtual char const* GetMessage() const noexcept final
     {
+        if (message.empty())
+            return nullptr;
         return message.c_str();
     }
 };
