@@ -120,7 +120,7 @@ Mnist Mnist::MakeFromFile(std::filesystem::path const& imagePath,
     if (images.size() != labels.size() * MnistSample::width * MnistSample::height)
         throw MnistSampleNumberDoesNotMatchException {};
 
-    return Mnist { images.size(), std::move(images), std::move(labels) };
+    return Mnist { labels.size(), std::move(images), std::move(labels) };
 }
 
 }
